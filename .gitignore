@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Arquivos de cache e logs
+*.log
+*.tmp
+*.temp
+
+# Outros
+.DS_Store
+Thumbs.db

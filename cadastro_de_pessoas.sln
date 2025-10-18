@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "cadastro_de_pessoas.client", "cadastro_de_pessoas.client\cadastro_de_pessoas.client.esproj", "{A55D2D10-5B6E-2344-514F-585F8C55C67C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadastro_de_pessoas.Server", "cadastro_de_pessoas.Server\cadastro_de_pessoas.Server.csproj", "{F4BF2C52-6494-49E0-877E-8CEFB1F15026}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55D2D10-5B6E-2344-514F-585F8C55C67C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F4BF2C52-6494-49E0-877E-8CEFB1F15026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BF2C52-6494-49E0-877E-8CEFB1F15026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BF2C52-6494-49E0-877E-8CEFB1F15026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BF2C52-6494-49E0-877E-8CEFB1F15026}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B74D3B05-1875-40ED-908A-AACDD0A00C10}
+	EndGlobalSection
+EndGlobal
