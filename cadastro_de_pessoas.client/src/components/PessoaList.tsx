@@ -43,7 +43,6 @@ export const PessoaList: React.FC<PessoaListProps> = ({
 
     return (
         <div className="overflow-x-auto">
-            {/* Campos de filtro */}
             <div className="flex flex-wrap gap-4 mb-4">
                 <input
                     type="text"
