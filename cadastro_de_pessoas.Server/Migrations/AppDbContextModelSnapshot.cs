@@ -27,7 +27,7 @@ namespace cadastro_de_pessoas.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("PessoaDataAtualizacao")
+                    b.Property<DateTime?>("PessoaDataAtualizacao")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PessoaDataCadastro")

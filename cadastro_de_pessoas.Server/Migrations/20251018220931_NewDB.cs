@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace cadastro_de_pessoas.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class NewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace cadastro_de_pessoas.Server.Migrations
                     PessoaDataNascimento = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PessoaCPF = table.Column<string>(type: "TEXT", nullable: false),
                     PessoaDataCadastro = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    PessoaDataAtualizacao = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    PessoaDataAtualizacao = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

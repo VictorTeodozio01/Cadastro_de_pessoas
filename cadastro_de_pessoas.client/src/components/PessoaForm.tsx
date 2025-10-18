@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Pessoa } from '../models/Pessoa';
 import type { PessoaDto } from '../dto/PessoaDto';
 import axios from 'axios';
+import { formatarCPF } from '../utils';
 
 interface PessoaFormProps {
     pessoa?: Pessoa;
@@ -112,7 +113,7 @@ export const PessoaForm: React.FC<PessoaFormProps> = ({
                 <input
                     type="text"
                     name="pessoaCPF"
-                    value={formData.pessoaCPF}
+                    value={formatarCPF(formData.pessoaCPF)}
                     onChange={handleChange}
                     placeholder="000.000.000-00"
                     className="w-full border p-2 "

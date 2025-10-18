@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Pessoa } from '../models/Pessoa';
 import { format, parseISO } from 'date-fns';
+import { formatarCPF } from '../utils';
 
 interface PessoaListProps {
     pessoas: Pessoa[];
@@ -15,12 +16,7 @@ export const PessoaList: React.FC<PessoaListProps> = ({
     onDelete,
     isLoading = false,
 }) => {
-    const formatCPF = (cpf: string | null | undefined) => {
-        if (!cpf) return '';
-        const clean = cpf.replace(/\D/g, '');
-        if (clean.length !== 11){ return clean};
-        return clean.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    };
+
 
     if (isLoading) {
         return (
@@ -55,10 +51,10 @@ export const PessoaList: React.FC<PessoaListProps> = ({
                     {pessoas.map((pessoa) => (
                         <tr key={pessoa.pessoaId} className="hover:bg-gray-50"> 
                             <td>{pessoa.pessoaNome}</td> 
-                            <td>{formatCPF(pessoa.pessoaCPF)}</td>
+                            <td>{formatarCPF(pessoa.pessoaCPF)}</td>
                             <td>{format(parseISO(pessoa.pessoaDataNascimento), 'dd-MM-yyyy')}</td>
                             <td>{format(parseISO(pessoa.pessoaDataCadastro), 'dd-MM-yyy HH:mm:ss')}</td>
-                            <td>{pessoa.pessoaDataAtualizacao ? format(parseISO(pessoa.pessoaDataAtualizacao), 'dd-MM-yyyy HH:mm:ss') : null} </td>
+                            <td> {pessoa.pessoaDataAtualizacao ? format(parseISO(pessoa.pessoaDataAtualizacao), 'dd-MM-yyyy HH:mm:ss') : ''} </td>
                             <td>
                                 <button
                                     onClick={() => onEdit(pessoa)}

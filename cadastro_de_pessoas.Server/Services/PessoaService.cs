@@ -53,6 +53,7 @@ public class PessoaService
             PessoaNome = pessoadto.PessoaNome.Trim(),
             PessoaDataNascimento = pessoadto.PessoaDataNascimento.Date,
             PessoaCPF = cpf,
+            PessoaDataCadastro = DateTime.Now
         };
 
         _db.Pessoas.Add(pessoa);

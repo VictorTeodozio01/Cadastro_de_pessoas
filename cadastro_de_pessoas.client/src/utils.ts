@@ -9,7 +9,3 @@ export function formatarCPF(valor: string): string {
     9
   )}-${digits.slice(9, 11)}`;
 }
-
-export function removerFormatacaoCPF(valor: string): string {
-  return valor.replace(/\D/g, "");
-}

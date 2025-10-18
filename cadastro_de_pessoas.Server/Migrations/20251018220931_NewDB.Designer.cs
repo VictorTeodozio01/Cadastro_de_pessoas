@@ -11,8 +11,8 @@ using cadastro_de_pessoas.Server.Data;
 namespace cadastro_de_pessoas.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251018004645_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251018220931_NewDB")]
+    partial class NewDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace cadastro_de_pessoas.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("PessoaDataAtualizacao")
+                    b.Property<DateTime?>("PessoaDataAtualizacao")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PessoaDataCadastro")
