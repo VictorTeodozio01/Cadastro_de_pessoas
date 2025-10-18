@@ -86,7 +86,7 @@ export function App() {
                 <div className="bg-white -lg p-6">
                     <button
                         onClick={criarPessoa}
-                        className="bg-green-600 text-white px-3 py-1"
+                        className="bg-green-600 text-white px-3 py-1 mb-4"
                     >
                         Nova Pessoa
                     </button>
