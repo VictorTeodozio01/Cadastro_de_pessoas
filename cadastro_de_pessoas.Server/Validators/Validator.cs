@@ -14,7 +14,7 @@ public class Validator : AbstractValidator<PessoaDto>
             .Must(CpfValido).WithMessage("CPF inválido");
 
         RuleFor(x => x.PessoaDataNascimento)
-            .NotEmpty().WithMessage("Data de nascimento é obrigatória")
+            .NotEmpty().WithMessage("Data de NAscimento é obrigatória")
             .LessThan(DateTime.Today).WithMessage("Data de nascimento deve ser no passado");
     }
 
@@ -34,5 +34,15 @@ public class Validator : AbstractValidator<PessoaDto>
         r = (s * 10) % 11;
         if (r == 10) r = 0;
         return r == (c[10] - '0');
+    }
+
+    public async Task PessoaFormValidador(PessoaDto dto)
+    {
+        var result = await ValidateAsync(dto);
+        if (!result.IsValid)
+        {
+            var errors = string.Join("; ", result.Errors.Select(e => $"{e.PropertyName}: {e.ErrorMessage}"));
+            throw new InvalidOperationException($"Erro de validação: {errors}");
+        }
     }
 }

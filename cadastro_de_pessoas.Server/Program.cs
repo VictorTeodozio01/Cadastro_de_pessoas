@@ -1,6 +1,7 @@
 using cadastro_de_pessoas.Server.Data;
 using cadastro_de_pessoas.Server.Dtos;
 using cadastro_de_pessoas.Server.Services;
+using cadastro_de_pessoas.Server.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +20,11 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
-
 builder.Services.AddScoped<IValidator<PessoaDto>,Validator>();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<InvalidOperationExceptionFilter>();
+});
 builder.Services.AddScoped<PessoaService>();
 var app = builder.Build();
 

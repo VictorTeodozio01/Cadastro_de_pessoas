@@ -7,5 +7,5 @@ public class PessoaDto
     public DateTime PessoaDataNascimento { get; set; }
     public string PessoaCPF { get; set; }
     public DateTime PessoaDataCadastro { get; set; }
-    public DateTime PessoaDataAtualizacao { get; set; }
+    public DateTime? PessoaDataAtualizacao { get; set; }
 }

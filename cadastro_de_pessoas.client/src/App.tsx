@@ -65,7 +65,7 @@ export function App() {
     const enviarFormulario = async (dadosPessoa: Pessoa) => {
         setErro('');
         if (editar) {
-            await pessoaService.Update(editar.PessoaId, dadosPessoa);
+            await pessoaService.Update(editar.pessoaId, dadosPessoa);
         } else {
             await pessoaService.Insert(dadosPessoa);
         }

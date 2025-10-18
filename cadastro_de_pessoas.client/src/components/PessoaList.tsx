@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Pessoa } from '../models/Pessoa';
+import { format, parseISO } from 'date-fns';
 
 interface PessoaListProps {
     pessoas: Pessoa[];
@@ -14,14 +15,10 @@ export const PessoaList: React.FC<PessoaListProps> = ({
     onDelete,
     isLoading = false,
 }) => {
-    const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString('pt-BR');
-    };
-
     const formatCPF = (cpf: string | null | undefined) => {
         if (!cpf) return '';
         const clean = cpf.replace(/\D/g, '');
-        if (clean.length !== 11) return clean;
+        if (clean.length !== 11){ return clean};
         return clean.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     };
 
@@ -49,6 +46,8 @@ export const PessoaList: React.FC<PessoaListProps> = ({
                         <th className="text-left">Nome</th>
                         <th className="text-left">CPF</th>
                         <th className="text-left">Data Nascimento</th>
+                        <th className="text-left">Data de Cadastro</th>
+                        <th className="text-left">Data de Atualizacao</th>
                         <th className="text-left">Ações</th>
                     </tr>
                 </thead>
@@ -57,7 +56,9 @@ export const PessoaList: React.FC<PessoaListProps> = ({
                         <tr key={pessoa.pessoaId} className="hover:bg-gray-50"> 
                             <td>{pessoa.pessoaNome}</td> 
                             <td>{formatCPF(pessoa.pessoaCPF)}</td>
-                            <td>{formatDate(pessoa.pessoaDataNascimento)}</td>
+                            <td>{format(parseISO(pessoa.pessoaDataNascimento), 'dd-MM-yyyy')}</td>
+                            <td>{format(parseISO(pessoa.pessoaDataCadastro), 'dd-MM-yyy HH:mm:ss')}</td>
+                            <td>{pessoa.pessoaDataAtualizacao ? format(parseISO(pessoa.pessoaDataAtualizacao), 'dd-MM-yyyy HH:mm:ss') : null} </td>
                             <td>
                                 <button
                                     onClick={() => onEdit(pessoa)}
@@ -66,7 +67,7 @@ export const PessoaList: React.FC<PessoaListProps> = ({
                                     Editar
                                 </button>
                                 <button
-                                    onClick={() => onDelete(pessoa.pessoaId)} // ✅ PessoaId
+                                    onClick={() => onDelete(pessoa.pessoaId)} 
                                     className="text-red-600"
                                 >
                                     Excluir

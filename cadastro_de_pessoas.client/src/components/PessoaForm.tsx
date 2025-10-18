@@ -3,11 +3,6 @@ import type { Pessoa } from '../models/Pessoa';
 import type { PessoaDto } from '../dto/PessoaDto';
 import axios from 'axios';
 
-interface ApiErrorItem {
-    campo: string;
-    mensagem: string;
-}
-
 interface PessoaFormProps {
     pessoa?: Pessoa;
     onSubmit: (pessoa: PessoaDto) => Promise<void>;
@@ -53,7 +48,7 @@ export const PessoaForm: React.FC<PessoaFormProps> = ({
         const { name, value } = e.target;
         let cleanValue = value;
 
-        if (name === 'PessoaCPF') {
+        if (name === 'pessoaCPF') {
             cleanValue = value.replace(/\D/g, '');
         }
 
@@ -84,18 +79,12 @@ export const PessoaForm: React.FC<PessoaFormProps> = ({
                 const { data } = error.response;
 
                 if (Array.isArray(data)) {
-                    const fieldErrors: Record<string, string> = {};
-                    for (const item of data as ApiErrorItem[]) {
-                        // Converte PascalCase para camelCase
-                        const camelCaseKey = item.campo.charAt(0).toLowerCase() + item.campo.slice(1);
-                        fieldErrors[camelCaseKey] = item.mensagem;
-                    }
-                    
+                    const fieldErrors: Record<string, string> = {};                 
                     setApiErrors(fieldErrors);
                 } else if (typeof data === 'object' && data !== null && 'mensagem' in data) {
                     setApiErrors({ general: (data as { mensagem: string }).mensagem });
                 } else {
-                    setApiErrors({ general: 'Erro inesperado no servidor.' });
+                    setApiErrors({ general: 'Erro no servidor.' });
                 }
             } else {
                 setApiErrors({ general: 'Erro de conexão. Verifique sua rede.' });
@@ -129,7 +118,7 @@ export const PessoaForm: React.FC<PessoaFormProps> = ({
                     className="w-full border p-2 "
                     disabled={isLoading}
                 />
-                {apiErrors.PessoaCPF && <p className="text-red-600 text-sm mt-1">{apiErrors.pessoaCPF}</p>}
+                {apiErrors.pessoaCPF && <p className="text-red-600 text-sm mt-1">{apiErrors.pessoaCPF}</p>}
             </div>
 
             <div>
@@ -142,7 +131,7 @@ export const PessoaForm: React.FC<PessoaFormProps> = ({
                     className="w-full border p-2 "
                     disabled={isLoading}
                 />
-                {apiErrors.PessoaDataNascimento && (
+                {apiErrors.pessoaDataNascimento && (
                     <p className="text-red-600 text-sm mt-1">{apiErrors.pessoaDataNascimento}</p>
                 )}
             </div>
